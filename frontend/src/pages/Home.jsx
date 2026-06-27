@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTours } from '../hooks/useTours'
 import TourCard from '../components/TourCard'
 
-const WHATSAPP = '919876543210'
+const WHATSAPP = '918637090545'
 
 const DESTINATIONS = [
   { name: 'Rajasthan',          icon: 'fort',          desc: 'Land of Maharajas' },

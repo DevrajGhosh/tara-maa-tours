@@ -3,7 +3,7 @@ import localTours from '../data/tours.json'
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 // To switch to your backend, change USE_BACKEND to true and set API_URL
-const USE_BACKEND = false
+const USE_BACKEND = true
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -37,7 +37,16 @@ export function useTours(filters = {}) {
 
     fetch(`${API_URL}/api/tours?${params}`)
       .then(r => r.json())
-      .then(data => { setTours(data); setLoading(false) })
+      .then(data => {
+  const normalized = data.map(tour => ({
+    ...tour,
+    image: tour.image_url,
+    shortDescription: tour.short_description,
+    durationDays: tour.duration_days,
+  }))
+  setTours(normalized)
+  setLoading(false)
+})
       .catch(e => { setError(e.message); setLoading(false) })
   }, [filters.region, filters.duration, filters.featured])
 
