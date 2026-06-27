@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "name": "Royal Rajasthan Odyssey",
+    "region": "Rajasthan",
+    "duration": "8 Days / 7 Nights",
+    "price": 32000,
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800",
+    "shortDescription": "Forts, palaces, and desert sunsets across the land of maharajas.",
+    "highlights": ["Amber Fort Jaipur", "Lake Palace Udaipur", "Jaisalmer Desert Safari", "Pushkar Fair", "City Palace Tour"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival in Jaipur", "description": "Arrive at Jaipur airport, check-in at heritage hotel. Evening visit to Albert Hall Museum." },
+      { "day": 2, "title": "Jaipur Sightseeing", "description": "Full day tour — Amber Fort, Hawa Mahal, City Palace, Jantar Mantar. Bazaar walk in evening." },
+      { "day": 3, "title": "Jaipur to Jodhpur", "description": "Drive to the Blue City. Visit Mehrangarh Fort and Jaswant Thada memorial." },
+      { "day": 4, "title": "Jodhpur to Jaisalmer", "description": "Travel to the Golden City. Check in and evening stroll in the old walled city." },
+      { "day": 5, "title": "Jaisalmer Desert Day", "description": "Jaisalmer Fort, Patwon Ki Haveli. Afternoon camel safari in Sam Sand Dunes. Overnight camp." },
+      { "day": 6, "title": "Jaisalmer to Udaipur", "description": "Fly or long drive to the City of Lakes. Check-in with lake view." },
+      { "day": 7, "title": "Udaipur Exploration", "description": "City Palace, Jagdish Temple, boat ride on Lake Pichola, Saheliyon ki Bari gardens." },
+      { "day": 8, "title": "Departure", "description": "Morning free for shopping. Transfer to airport. Journey ends with golden memories." }
+    ],
+    "inclusions": ["All hotel stays (3-star/heritage)", "Daily breakfast + dinner", "AC vehicle for all transfers", "Licensed English-speaking guide", "Camel safari & desert camp", "All entry tickets"],
+    "exclusions": ["Airfare to/from Jaipur/Udaipur", "Lunch at own cost", "Personal shopping", "Tips & porterage", "Travel insurance"]
+  },
+  {
+    "id": 2,
+    "name": "Kerala Backwaters & Spice Trail",
+    "region": "Kerala",
+    "duration": "6 Days / 5 Nights",
+    "price": 28000,
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800",
+    "shortDescription": "Houseboat cruises, misty hill stations, and ancient Ayurveda in God's Own Country.",
+    "highlights": ["Alleppey Houseboat Stay", "Munnar Tea Gardens", "Periyar Wildlife Sanctuary", "Kathakali Performance", "Spice Plantation Tour"],
+    "itinerary": [
+      { "day": 1, "title": "Arrive Kochi", "description": "Arrive in Kochi, explore Fort Kochi, Chinese fishing nets, Mattancherry Palace." },
+      { "day": 2, "title": "Kochi to Munnar", "description": "Drive through winding mountain roads to Munnar. Visit Eravikulam National Park." },
+      { "day": 3, "title": "Munnar Tea Country", "description": "Tea museum, spice gardens, Top Station viewpoint. Sunset at Mattupetty Dam." },
+      { "day": 4, "title": "Munnar to Alleppey", "description": "Drive down to the backwaters. Board your private houseboat at noon." },
+      { "day": 5, "title": "Houseboat Cruise", "description": "Lazy morning cruise through village canals. Visit paddy fields and coconut groves. Sunset on the lake." },
+      { "day": 6, "title": "Departure from Kochi", "description": "Morning Ayurveda session. Transfer to Kochi airport." }
+    ],
+    "inclusions": ["Houseboat stay with all meals", "Hotel stays in Kochi & Munnar", "All transportation", "Kathakali show tickets", "Spice garden entry", "Ayurveda consultation"],
+    "exclusions": ["Flights to/from Kochi", "Alcoholic beverages", "Personal expenses", "Camera fees at monuments"]
+  },
+  {
+    "id": 3,
+    "name": "Himalayan Himachal Explorer",
+    "region": "Himachal Pradesh",
+    "duration": "7 Days / 6 Nights",
+    "price": 25000,
+    "featured": true,
+    "image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800",
+    "shortDescription": "Snow peaks, apple orchards, monasteries, and river valleys in the lap of the Himalayas.",
+    "highlights": ["Rohtang Pass Snow Experience", "Old Manali Village", "Hadimba Devi Temple", "Solang Valley Adventure", "Naggar Castle"],
+    "itinerary": [
+      { "day": 1, "title": "Arrive Manali", "description": "Arrive at Manali, settle in. Evening Mall Road stroll and local market exploration." },
+      { "day": 2, "title": "Local Manali Sightseeing", "description": "Hadimba Temple, Manu Temple, Tibetan Monastery, Van Vihar. Vashisht hot springs in evening." },
+      { "day": 3, "title": "Rohtang Pass Day Trip", "description": "Early morning drive to Rohtang Pass (subject to permits). Snow activities, stunning glacier views." },
+      { "day": 4, "title": "Solang Valley", "description": "Solang Valley for paragliding, zorbing, and cable car rides. Afternoon at leisure." },
+      { "day": 5, "title": "Manali to Kasol", "description": "Drive through Kullu Valley to the hippie haven of Kasol. River camping." },
+      { "day": 6, "title": "Kheerganga Trek", "description": "Trek to Kheerganga hot springs through pine forests. Hot spring dip at summit." },
+      { "day": 7, "title": "Return to Manali & Departure", "description": "Drive back to Manali for departure flight/bus." }
+    ],
+    "inclusions": ["6 nights accommodation", "Daily breakfast", "All sightseeing by cab", "Rohtang permit arrangements", "River camp one night", "Paragliding at Solang"],
+    "exclusions": ["Travel to/from Manali", "Lunch and dinner", "Personal adventure gear", "Medical insurance"]
+  },
+  {
+    "id": 4,
+    "name": "Sacred Varanasi & Prayagraj Pilgrimage",
+    "region": "Uttar Pradesh",
+    "duration": "4 Days / 3 Nights",
+    "price": 12000,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1561361058-c24e78b6b0a3?w=800",
+    "shortDescription": "Witness the eternal city where life, death and spirituality flow together on the banks of the Ganga.",
+    "highlights": ["Ganga Aarti at Dashashwamedh Ghat", "Sunrise Boat Ride", "Sarnath Buddhist Circuit", "Kashi Vishwanath Temple", "Prayagraj Sangam Visit"],
+    "itinerary": [
+      { "day": 1, "title": "Arrive Varanasi", "description": "Arrive and check in. Evening Ganga Aarti at Dashashwamedh Ghat — one of India's most spiritual spectacles." },
+      { "day": 2, "title": "Varanasi Deep Dive", "description": "Pre-dawn boat ride on the Ganga to watch the sunrise over the ghats. Kashi Vishwanath Temple. Narrow lanes exploration." },
+      { "day": 3, "title": "Sarnath & Prayagraj", "description": "Morning Sarnath — where Buddha gave his first sermon. Afternoon drive to Prayagraj (Allahabad)." },
+      { "day": 4, "title": "Sangam & Departure", "description": "Boat ride at the holy Triveni Sangam. Anand Bhawan. Departure." }
+    ],
+    "inclusions": ["3 nights hotel in Varanasi", "All AC transfers", "Boat rides included", "Temple visits guided", "Prayagraj day trip"],
+    "exclusions": ["Train/flight fares", "Puja samagri", "Meals (local food trail recommended)", "Personal donations"]
+  },
+  {
+    "id": 5,
+    "name": "Andaman Island Escape",
+    "region": "Andaman & Nicobar",
+    "duration": "6 Days / 5 Nights",
+    "price": 38000,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800",
+    "shortDescription": "Pristine beaches, coral reefs, and turquoise waters at the edge of the Indian Ocean.",
+    "highlights": ["Radhanagar Beach Havelock", "Scuba Diving & Snorkelling", "Cellular Jail Light & Sound Show", "Ross Island", "Glass-bottom Boat Ride"],
+    "itinerary": [
+      { "day": 1, "title": "Arrive Port Blair", "description": "Arrive, check-in. Cellular Jail tour. Evening light and sound show." },
+      { "day": 2, "title": "Port Blair Local", "description": "Ross Island, North Bay Island (snorkelling), Corbyn's Cove beach." },
+      { "day": 3, "title": "Ferry to Havelock", "description": "Morning ferry to Havelock Island. Afternoon at Radhanagar Beach — one of Asia's best." },
+      { "day": 4, "title": "Havelock Water Adventures", "description": "Full day — scuba diving or snorkelling at Elephant Beach. Glass-bottom boat ride." },
+      { "day": 5, "title": "Havelock to Neil Island", "description": "Morning ferry to Neil Island. Natural Rock Bridge, Bharatpur Beach." },
+      { "day": 6, "title": "Return & Departure", "description": "Ferry back to Port Blair. Transfer to airport." }
+    ],
+    "inclusions": ["5 nights stay (Port Blair + Havelock)", "Ferry tickets between islands", "Scuba diving (1 dive)", "Snorkelling gear", "All transfers", "Cellular Jail tickets"],
+    "exclusions": ["Flights to/from Port Blair", "Additional dives", "Personal shopping", "Meals (seafood is a must-try!)"]
+  },
+  {
+    "id": 6,
+    "name": "Northeast Frontier — Meghalaya & Assam",
+    "region": "Northeast India",
+    "duration": "9 Days / 8 Nights",
+    "price": 42000,
+    "featured": false,
+    "image": "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800",
+    "shortDescription": "Living root bridges, Kaziranga rhinos, Brahmaputra river cruises, and mist-covered hills.",
+    "highlights": ["Living Root Bridges Cherrapunji", "Kaziranga National Park Safari", "Dawki River & Bangladesh Border", "Shillong Peak", "Majuli River Island"],
+    "itinerary": [
+      { "day": 1, "title": "Arrive Guwahati", "description": "Arrive Guwahati. Kamakhya Temple visit. Brahmaputra evening cruise." },
+      { "day": 2, "title": "Kaziranga Safari", "description": "Drive to Kaziranga. Evening arrival. Jeep safari to spot one-horned rhinos, elephants, tigers." },
+      { "day": 3, "title": "Kaziranga to Shillong", "description": "Morning elephant safari. Drive to Shillong — the Scotland of the East." },
+      { "day": 4, "title": "Shillong Exploration", "description": "Ward's Lake, Don Bosco Museum, local markets. Overnight in Shillong." },
+      { "day": 5, "title": "Cherrapunji Day Trip", "description": "Nohkalikai Falls, Mawsmai Caves, Seven Sisters Falls viewpoint." },
+      { "day": 6, "title": "Living Root Bridges", "description": "Trek to the double-decker living root bridges of Nongriat village. Worth every step." },
+      { "day": 7, "title": "Dawki & Mawlynnong", "description": "Crystal-clear Dawki River. Asia's cleanest village — Mawlynnong. Bangladesh border view." },
+      { "day": 8, "title": "Majuli Island", "description": "Drive + ferry to Majuli — world's largest river island. Satra monastery stay." },
+      { "day": 9, "title": "Return Guwahati & Departure", "description": "Ferry back. Drive to Guwahati airport. Departure." }
+    ],
+    "inclusions": ["8 nights accommodation", "All meals during safari days", "Jeep + elephant safari", "All transportation", "Local guides throughout", "Brahmaputra cruise"],
+    "exclusions": ["Flights to/from Guwahati", "Personal gear for trekking", "Additional safaris", "Travel insurance"]
+  }
+]
