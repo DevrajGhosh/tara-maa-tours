@@ -1,5 +1,5 @@
-const WHATSAPP = '919876543210'
-const PHONE    = '+91 98765 43210'
+const WHATSAPP = '918637090545'
+const PHONE    = '+91 8637090545'
 const FACEBOOK = 'https://www.facebook.com/share/1LhYE11Jch/'
 const ADDRESS  = 'Noapara, Barasat, Kolkata - 700125, West Bengal, India'
 const HOURS    = 'Mon–Sat: 9:00 AM – 7:00 PM\nSunday: By Appointment Only'

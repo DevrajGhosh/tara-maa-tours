@@ -2,12 +2,6 @@ const FACEBOOK = 'https://www.facebook.com/share/1LhYE11Jch/'
 const WHATSAPP = '918637090545'
 const PHONE    = '+91 8637090545'
 
-const TEAM = [
-  { name: 'Sujata Devi',    role: 'Founder & Tour Director',    bio: '20+ years of curating heartfelt India experiences. Born explorer, West Bengal native.' },
-  { name: 'Arjun Roy',      role: 'Head of Operations',         bio: 'Logistics genius who ensures every pickup, hotel, and permit is perfectly in place.' },
-  { name: 'Priyanka Ghosh', role: 'Travel Experience Designer', bio: 'Creates the magical itineraries that make our guests say "this was better than expected."' },
-]
-
 const VALUES = [
   { icon: 'favorite',       title: 'Authenticity',        desc: 'We show you the real India — not just the tourist version. Local food, real people, untouched places.' },
   { icon: 'currency_rupee', title: 'Affordability',       desc: "Premium experience doesn't have to mean premium prices. We find the best value at every budget." },
@@ -27,7 +21,7 @@ export default function About() {
               Born from a love of<br /><span className="text-primary">Incredible India</span>
             </h1>
             <p className="text-on-surface-var text-lg leading-relaxed mb-6">
-              Tara Maa Tours & Travels was founded with a simple mission — to help people truly experience the beauty, diversity, and soul of India. Based in Noapara, Barasat, Kolkata, we are a family-run agency that has been designing heartfelt journeys for over a decade.
+              Tara Maa Tours & Travels was founded by <strong>Babu Ghosh</strong> with a simple mission — to help people truly experience the beauty, diversity, and soul of India. Based in Noapara, Barasat, Kolkata, we are a family-run agency that has been designing heartfelt journeys for over a decade.
             </p>
             <p className="text-on-surface-var leading-relaxed mb-8">
               We believe travel is not just about visiting places — it's about stories you carry home. From the golden sands of Rajasthan to the misty hills of Meghalaya, we've walked every trail we recommend.
@@ -36,7 +30,9 @@ export default function About() {
             {/* Facebook CTA — prominent */}
             <div className="bg-[#1877F2]/10 border border-[#1877F2]/20 rounded-2xl p-5 mb-6">
               <p className="text-sm font-bold text-on-surface mb-1">Connect with us on Facebook</p>
-              <p className="text-xs text-on-surface-var mb-3">Most of our customers find us and book through our Facebook page. Follow us for tour updates, travel tips, and special offers!</p>
+              <p className="text-xs text-on-surface-var mb-3">
+                Most of our customers find us and book through our Facebook page. We regularly post <strong>real video reviews</strong> from our travellers — watch their experiences before you book!
+              </p>
               <a
                 href={FACEBOOK}
                 target="_blank"
@@ -58,11 +54,12 @@ export default function About() {
             </div>
           </div>
 
+          {/* Mountain image */}
           <div className="relative">
             <div className="aspect-square rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&auto=format&fit=crop"
-                alt="India Travel"
+                src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&auto=format&fit=crop"
+                alt="Himalayan mountains"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -74,8 +71,87 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Video Reviews Section */}
+      <section className="py-16 bg-[#1877F2]/5 border-y border-[#1877F2]/10">
+        <div className="max-w-container mx-auto px-5 md:px-16">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <p className="text-xs font-bold text-[#1877F2] uppercase tracking-[0.25em] mb-2">Real Reviews — Video Testimonials</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-on-surface mb-3">
+                Watch Our Travellers Share Their Experience
+              </h2>
+              <p className="text-on-surface-var leading-relaxed mb-4">
+                We don't believe in fake written reviews. Our happy travellers regularly post <strong>real video reviews</strong> on our Facebook page — straight from their trips, in their own words. Watch them before you decide to book!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={FACEBOOK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#1877F2] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#1464d8] transition-all"
+                >
+                  <span className="material-symbols-outlined">play_circle</span>
+                  Watch Video Reviews on Facebook
+                </a>
+              </div>
+            </div>
+            <div className="flex gap-4 shrink-0">
+              {[
+                { icon: 'videocam',     label: 'Video Reviews',    sub: 'Posted regularly' },
+                { icon: 'thumb_up',     label: 'Facebook Verified', sub: 'Real customers' },
+                { icon: 'travel_explore', label: 'Live Tour Updates', sub: 'During trips' },
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-2xl p-4 border border-[#1877F2]/15 text-center shadow-sm min-w-[90px]">
+                  <span className="material-symbols-outlined text-[28px] text-[#1877F2] mb-2 block">{item.icon}</span>
+                  <p className="text-xs font-bold text-on-surface leading-tight">{item.label}</p>
+                  <p className="text-[10px] text-on-surface-var mt-0.5">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Owner Section */}
       <section className="py-20 bg-surface">
+        <div className="max-w-container mx-auto px-5 md:px-16">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold text-primary uppercase tracking-[0.25em] mb-2">The Person Behind Your Journey</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-on-surface">Meet the Founder</h2>
+          </div>
+          <div className="max-w-md mx-auto bg-white rounded-2xl p-8 border border-outline-light text-center hover:shadow-lg transition-all">
+            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border-4 border-primary/20 shadow-lg">
+              <img
+                src="https://res.cloudinary.com/djugcoeey/image/upload/v1782663961/482000689_1654954522052203_539155258018899307_n_o4ohua.jpg"
+                alt="Babu Ghosh"
+                className="w-full h-full object-cover"
+                onError={e => {
+                  e.target.onerror = null
+                  e.target.src = ''
+                  e.target.parentElement.innerHTML = '<div class="w-full h-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-[48px] text-primary">person</span></div>'
+                }}
+              />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-on-surface">Babu Ghosh</h3>
+            <p className="text-xs text-primary font-semibold uppercase tracking-wider mt-1 mb-3">Founder & Owner</p>
+            <p className="text-sm text-on-surface-var leading-relaxed mb-5">
+              Babu Ghosh founded Tara Maa Tours & Travels with a passion for showing people the true beauty of India. With over a decade of experience, he personally oversees every tour to ensure an unforgettable experience for each traveller.
+            </p>
+            <a
+              href={FACEBOOK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-[#1877F2]/10 text-[#1877F2] px-5 py-2 rounded-xl text-sm font-bold hover:bg-[#1877F2] hover:text-white transition-all"
+            >
+              <span className="material-symbols-outlined text-[16px]">thumb_up</span>
+              Connect on Facebook
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20 bg-surface-low">
         <div className="max-w-container mx-auto px-5 md:px-16">
           <div className="text-center mb-14">
             <p className="text-xs font-bold text-primary uppercase tracking-[0.25em] mb-2">What We Stand For</p>
@@ -89,28 +165,6 @@ export default function About() {
                 </div>
                 <h3 className="font-display text-xl font-bold text-on-surface mb-3">{v.title}</h3>
                 <p className="text-sm text-on-surface-var leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20 bg-surface-low">
-        <div className="max-w-container mx-auto px-5 md:px-16">
-          <div className="text-center mb-14">
-            <p className="text-xs font-bold text-primary uppercase tracking-[0.25em] mb-2">The People Behind Your Journey</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-on-surface">Meet Our Team</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TEAM.map((member, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-outline-light text-center hover:shadow-lg transition-all">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="material-symbols-outlined text-[40px] text-primary">person</span>
-                </div>
-                <h3 className="font-bold text-on-surface text-lg">{member.name}</h3>
-                <p className="text-xs text-primary font-semibold uppercase tracking-wider mt-1 mb-3">{member.role}</p>
-                <p className="text-sm text-on-surface-var leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
