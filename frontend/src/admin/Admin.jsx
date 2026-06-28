@@ -72,12 +72,13 @@ export default function Admin() {
       formData.append('highlights', JSON.stringify(form.highlights.split('\n').filter(Boolean)))
       formData.append('inclusions', JSON.stringify(form.inclusions.split('\n').filter(Boolean)))
       formData.append('exclusions', JSON.stringify(form.exclusions.split('\n').filter(Boolean)))
-      formData.append('itinerary', JSON.stringify(
-        form.itinerary.split('\n').filter(Boolean).map((line, i) => {
-          const [title, ...rest] = line.split(':')
-          return { day: i + 1, title: title.trim(), description: rest.join(':').trim() }
-        })
-      ))
+      const itineraryData = form.itinerary.split('\n').filter(Boolean).map((line, i) => {
+  const colonIndex = line.indexOf(':')
+  const title = colonIndex > -1 ? line.substring(0, colonIndex).trim() : line.trim()
+  const description = colonIndex > -1 ? line.substring(colonIndex + 1).trim() : ''
+  return { day: i + 1, title, description }
+})
+formData.append('itinerary', JSON.stringify(itineraryData))
       if (form.image) formData.append('image', form.image)
 
       const res = await fetch(`${API_URL}/api/tours`, {

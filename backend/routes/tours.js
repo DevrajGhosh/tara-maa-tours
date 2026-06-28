@@ -97,10 +97,10 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
         featured === 'true',
         image_url,
         short_description,
-        JSON.parse(highlights),
-        JSON.parse(itinerary),
-        JSON.parse(inclusions),
-        JSON.parse(exclusions),
+        typeof itinerary === 'string' ? JSON.parse(itinerary) : itinerary,
+        typeof highlights === 'string' ? JSON.parse(highlights) : highlights,
+        typeof inclusions === 'string' ? JSON.parse(inclusions) : inclusions,
+        typeof exclusions === 'string' ? JSON.parse(exclusions) : exclusions,
       ]
     )
     res.status(201).json(result.rows[0])
