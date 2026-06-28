@@ -130,13 +130,31 @@ export default function Admin() {
           <h2 className="font-display text-xl font-bold text-on-surface border-b border-outline-light pb-4">Add New Tour</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Field label="Tour Name *"    name="name"        placeholder="e.g. Royal Rajasthan Odyssey" />
-            <Field label="Region *"       name="region"      placeholder="e.g. Rajasthan" />
-            <Field label="Duration Text"  name="duration"    placeholder="e.g. 8 Days / 7 Nights" />
-            <Field label="Duration (Days)" name="durationDays" type="number" placeholder="8" />
-            <Field label="Price (₹) *"    name="price"       type="number" placeholder="32000" />
-            <Field label="Cover Image URL" name="image"      placeholder="https://images.unsplash.com/..." />
-          </div>
+  <Field label="Tour Name *"      name="name"         placeholder="e.g. Royal Rajasthan Odyssey" />
+  <Field label="Region *"         name="region"       placeholder="e.g. Rajasthan" />
+  <Field label="Duration Text"    name="duration"     placeholder="e.g. 8 Days / 7 Nights" />
+  <Field label="Duration (Days)"  name="durationDays" type="number" placeholder="8" />
+  <Field label="Price (₹) *"      name="price"        type="number" placeholder="32000" />
+  <div>
+    <label className="text-xs font-bold text-on-surface-var uppercase tracking-wider block mb-1">Tour Photo *</label>
+    <input
+      type="file"
+      accept="image/*"
+      onChange={e => setForm(f => ({ ...f, image: e.target.files[0] }))}
+      className="w-full border border-outline-light rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 bg-white cursor-pointer"
+    />
+    {form.image && (
+      <div className="mt-2 flex items-center gap-2">
+        <img
+          src={URL.createObjectURL(form.image)}
+          alt="preview"
+          className="w-16 h-16 rounded-xl object-cover border border-outline-light"
+        />
+        <span className="text-xs text-green-600 font-semibold">✓ {form.image.name}</span>
+      </div>
+    )}
+  </div>
+</div>
 
           <TextArea label="Short Description *" name="shortDescription" placeholder="2-3 lines about this tour..." rows={2} />
 
