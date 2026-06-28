@@ -123,7 +123,7 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
         image_url,
         short_description,
         safeParseArray(highlights),
-        safeParseItinerary(itinerary),
+        JSON.parse(itinerary.replace(/\\"/g, "'")),
         safeParseArray(inclusions),
         safeParseArray(exclusions),
       ]

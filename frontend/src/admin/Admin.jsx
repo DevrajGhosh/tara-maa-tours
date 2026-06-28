@@ -57,7 +57,7 @@ export default function Admin() {
     else setForm(f => ({ ...f, [name]: type === 'checkbox' ? checked : value }))
   }
 
-  const handleSave = async () => {
+const handleSave = async () => {
     setLoading(true)
     setError('')
     try {
@@ -65,20 +65,41 @@ export default function Admin() {
       formData.append('name', form.name)
       formData.append('region', form.region)
       formData.append('duration', form.duration)
-      formData.append('duration_days', form.durationDays)
-      formData.append('price', form.price)
+      formData.append('duration_days', form.durationDays || 0)
+      formData.append('price', form.price || 0)
       formData.append('featured', form.featured)
       formData.append('short_description', form.shortDescription)
-      formData.append('highlights', JSON.stringify(form.highlights.split('\n').filter(Boolean)))
-      formData.append('inclusions', JSON.stringify(form.inclusions.split('\n').filter(Boolean)))
-      formData.append('exclusions', JSON.stringify(form.exclusions.split('\n').filter(Boolean)))
-      const itineraryData = form.itinerary.split('\n').filter(Boolean).map((line, i) => {
-  const colonIndex = line.indexOf(':')
-  const title = colonIndex > -1 ? line.substring(0, colonIndex).trim() : line.trim()
-  const description = colonIndex > -1 ? line.substring(colonIndex + 1).trim() : ''
-  return { day: i + 1, title, description }
-})
-formData.append('itinerary', JSON.stringify(itineraryData))
+
+      // Highlights — split by newline
+      const highlightsArr = form.highlights.split('\n').map(s => s.trim()).filter(Boolean)
+      formData.append('highlights', JSON.stringify(highlightsArr))
+
+      // Inclusions & Exclusions — split by newline
+      const inclusionsArr = form.inclusions.split('\n').map(s => s.trim()).filter(Boolean)
+      const exclusionsArr = form.exclusions.split('\n').map(s => s.trim()).filter(Boolean)
+      formData.append('inclusions', JSON.stringify(inclusionsArr))
+      formData.append('exclusions', JSON.stringify(exclusionsArr))
+
+      // Itinerary — each line is "Title: Description"
+      // We sanitize by removing any extra quotes or backslashes
+      const itineraryArr = form.itinerary
+        .split('\n')
+        .map(s => s.trim())
+        .filter(Boolean)
+        .map((line, i) => {
+          const colonIndex = line.indexOf(':')
+          const title = colonIndex > -1
+            ? line.substring(0, colonIndex).trim()
+            : line.trim()
+          const description = colonIndex > -1
+            ? line.substring(colonIndex + 1).trim().replace(/\\/g, '').replace(/"/g, "'")
+            : ''
+          return { day: i + 1, title, description }
+        })
+      
+      // Use a clean stringify with no escaping issues
+      formData.append('itinerary', JSON.stringify(itineraryArr))
+
       if (form.image) formData.append('image', form.image)
 
       const res = await fetch(`${API_URL}/api/tours`, {
@@ -87,7 +108,8 @@ formData.append('itinerary', JSON.stringify(itineraryData))
         body: formData,
       })
 
-      if (!res.ok) throw new Error('Failed to save tour')
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Failed to save tour')
 
       setSaved(true)
       setForm(EMPTY_TOUR)
