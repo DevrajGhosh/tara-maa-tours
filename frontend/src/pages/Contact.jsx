@@ -1,7 +1,7 @@
-const WHATSAPP = '918637090545'
-const PHONE    = '+91 86370 90545'
-const EMAIL    = 'devrajghosh2525@gmail.com'
-const ADDRESS  = 'Noapara, Barasat, West Bengal, India'
+const WHATSAPP = '919876543210'
+const PHONE    = '+91 98765 43210'
+const FACEBOOK = 'https://www.facebook.com/share/1LhYE11Jch/'
+const ADDRESS  = 'Noapara, Barasat, Kolkata - 700125, West Bengal, India'
 const HOURS    = 'Mon–Sat: 9:00 AM – 7:00 PM\nSunday: By Appointment Only'
 
 export default function Contact() {
@@ -22,62 +22,58 @@ export default function Contact() {
       {/* 3 Contact Cards */}
       <section className="py-20 bg-surface">
         <div className="max-w-container mx-auto px-5 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
+          {/* Facebook — highlighted as primary */}
+          <div className="mb-6">
+            <a
+              href={FACEBOOK}
+              target="_blank"
+              rel="noreferrer"
+              className="group bg-[#1877F2] p-8 rounded-2xl hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row items-center gap-6 relative overflow-hidden"
+            >
+              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[40px] text-white">thumb_up</span>
+              </div>
+              <div className="text-center md:text-left">
+                <span className="text-xs font-bold text-white/70 uppercase tracking-widest">Most Popular — Connect on</span>
+                <h3 className="font-display text-2xl font-bold text-white mb-1">Facebook</h3>
+                <p className="text-white/80 text-sm">Follow our page for tour updates, travel tips, and instant booking support. Most of our customers connect with us here!</p>
+              </div>
+              <span className="md:ml-auto bg-white text-[#1877F2] px-6 py-3 rounded-xl font-bold shrink-0 group-hover:shadow-lg transition-all">
+                Visit Our Page →
+              </span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* WhatsApp */}
             <a
               href={`https://wa.me/${WHATSAPP}?text=Hi%21%20I%27d%20like%20to%20enquire%20about%20a%20tour%20with%20Tara%20Maa%20Tours.`}
               target="_blank"
               rel="noreferrer"
-              className="group bg-white p-8 rounded-2xl border border-outline-light hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center relative overflow-hidden"
+              className="group bg-white p-8 rounded-2xl border border-outline-light hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 bg-[#25D366]/15 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-[30px] text-[#25D366]">chat</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-2">WhatsApp Us</h3>
-                <p className="text-on-surface-var text-sm mb-5">Fastest response — we reply within minutes.</p>
-                <span className="bg-[#25D366] text-white px-6 py-2 rounded-xl text-sm font-bold group-hover:bg-[#1ebe5d] transition-colors">
-                  Open WhatsApp →
-                </span>
+              <div className="w-16 h-16 bg-[#25D366]/15 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[30px] text-[#25D366]">chat</span>
               </div>
+              <h3 className="font-display text-xl font-bold text-on-surface mb-2">WhatsApp Us</h3>
+              <p className="text-on-surface-var text-sm mb-5">Fastest response — we reply within minutes.</p>
+              <span className="bg-[#25D366] text-white px-6 py-2 rounded-xl text-sm font-bold">
+                Open WhatsApp →
+              </span>
             </a>
 
             {/* Call */}
             <a
               href={`tel:${PHONE}`}
-              className="group bg-white p-8 rounded-2xl border border-outline-light hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center relative overflow-hidden"
+              className="group bg-white p-8 rounded-2xl border border-outline-light hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-[30px] text-secondary">call</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-2">Call for Booking</h3>
-                <p className="text-on-surface-var text-sm mb-5">Speak directly with our travel designers.</p>
-                <span className="text-secondary font-bold text-sm group-hover:underline">
-                  {PHONE} →
-                </span>
+              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-[30px] text-secondary">call</span>
               </div>
-            </a>
-
-            {/* Email */}
-            <a
-              href={`mailto:${EMAIL}?subject=Tour%20Enquiry%20-%20Tara%20Maa%20Tours&body=Hello%2C%0A%0AI%20am%20interested%20in%20booking%20a%20tour.%20Please%20share%20more%20details.%0A%0AThank%20you!`}
-              className="group bg-white p-8 rounded-2xl border border-outline-light hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center relative overflow-hidden"
-            >
-              <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 bg-tertiary-light/40 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-[30px] text-tertiary">mail</span>
-                </div>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-2">Write to Us</h3>
-                <p className="text-on-surface-var text-sm mb-5">For detailed itineraries and group plans.</p>
-                <span className="text-tertiary font-bold text-sm group-hover:underline">
-                  Send Email →
-                </span>
-              </div>
+              <h3 className="font-display text-xl font-bold text-on-surface mb-2">Call for Booking</h3>
+              <p className="text-on-surface-var text-sm mb-5">Speak directly with our travel designers.</p>
+              <span className="text-secondary font-bold text-sm">{PHONE} →</span>
             </a>
           </div>
         </div>
@@ -116,20 +112,20 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <span className="material-symbols-outlined text-[22px] text-primary mt-0.5">mail</span>
+                <span className="material-symbols-outlined text-[22px] text-[#1877F2] mt-0.5">thumb_up</span>
                 <div>
-                  <p className="font-bold text-sm text-on-surface">Email</p>
-                  <a href={`mailto:${EMAIL}`} className="text-primary text-sm font-semibold hover:underline">{EMAIL}</a>
+                  <p className="font-bold text-sm text-on-surface">Facebook</p>
+                  <a href={FACEBOOK} target="_blank" rel="noreferrer" className="text-[#1877F2] text-sm font-semibold hover:underline">Follow us on Facebook</a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Map placeholder */}
-          <div className="rounded-2xl overflow-hidden border border-outline-light shadow-lg h-72 md:h-96 bg-surface-high flex items-center justify-center relative">
+          {/* Map */}
+          <div className="rounded-2xl overflow-hidden border border-outline-light shadow-lg h-72 md:h-96">
             <iframe
               title="Tara Maa Tours Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58984.28843597754!2d88.3695!3d22.8725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89e1e5c53c5d5%3A0x7d5f80f1e0f09a09!2sBhatpara%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.8!2d88.4817!3d22.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDQyJzAwLjAiTiA4OMKwMjgnNTQuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -140,11 +136,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* Divider */}
-      <div className="flex justify-center py-16 bg-surface">
-        <span className="material-symbols-outlined text-[48px] text-tertiary opacity-30">hub</span>
-      </div>
     </div>
   )
 }

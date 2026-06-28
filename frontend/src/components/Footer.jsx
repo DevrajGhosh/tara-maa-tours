@@ -5,6 +5,7 @@ const PHONE     = '+91 8637090545'
 const EMAIL     = 'devrajghosh2525@gmail.com'
 const FACEBOOK  = 'https://www.facebook.com/share/1LhYE11Jch/'
 
+
 export default function Footer() {
   return (
     <footer className="w-full pt-16 pb-8 bg-surface-high border-t border-primary/15">
@@ -87,7 +88,7 @@ export default function Footer() {
               </a>
               <p className="flex items-start gap-2 mt-1">
                 <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">location_on</span>
-                <span>Bhātpāra, West Bengal, India</span>
+                <span>Noapara, Barasat, Kolkata - 700125</span>
               </p>
             </div>
           </div>
