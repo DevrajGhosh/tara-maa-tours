@@ -2,24 +2,24 @@ import { Link } from 'react-router-dom'
 import { useTours } from '../hooks/useTours'
 import TourCard from '../components/TourCard'
 
-const WHATSAPP = '918637090545'
+const WHATSAPP = '919876543210'
 
 const DESTINATIONS = [
-  { name: 'Rajasthan',          icon: 'fort',          desc: 'Land of Maharajas' },
-  { name: 'Kerala',             icon: 'sailing',        desc: "God's Own Country" },
-  { name: 'Himachal Pradesh',   icon: 'landscape',      desc: 'Valley of Gods' },
-  { name: 'Goa',                icon: 'beach_access',   desc: 'Pearl of the Orient' },
-  { name: 'Northeast India',    icon: 'forest',         desc: 'The Hidden Frontier' },
-  { name: 'Ladakh',             icon: 'snowing',        desc: 'Land of High Passes' },
-  { name: 'Varanasi',           icon: 'temple_buddhist', desc: 'The Eternal City' },
-  { name: 'Andaman',            icon: 'tsunami',        desc: 'Island of Dreams' },
+  { name: 'Rajasthan',        icon: 'fort',            desc: 'Land of Maharajas' },
+  { name: 'Kerala',           icon: 'sailing',          desc: "God's Own Country" },
+  { name: 'Himachal Pradesh', icon: 'landscape',        desc: 'Valley of Gods' },
+  { name: 'Goa',              icon: 'beach_access',     desc: 'Pearl of the Orient' },
+  { name: 'Northeast India',  icon: 'forest',           desc: 'The Hidden Frontier' },
+  { name: 'Ladakh',           icon: 'snowing',          desc: 'Land of High Passes' },
+  { name: 'Varanasi',         icon: 'temple_buddhist',  desc: 'The Eternal City' },
+  { name: 'Andaman',          icon: 'tsunami',          desc: 'Island of Dreams' },
 ]
 
 const WHY_US = [
-  { icon: 'workspace_premium', title: '10+ Years Experience',       desc: 'A decade of crafting unforgettable Indian journeys for thousands of happy travellers.' },
-  { icon: 'tune',              title: 'Fully Customizable',         desc: 'Every tour can be tailored to your budget, pace, and personal interests.' },
-  { icon: 'support_agent',     title: '24/7 Travel Support',        desc: 'Our team is always available — before, during, and after your journey.' },
-  { icon: 'currency_rupee',    title: 'Best Price Guarantee',       desc: 'Transparent pricing with no hidden charges. Value for every rupee spent.' },
+  { icon: 'workspace_premium', title: '10+ Years Experience',  desc: 'A decade of crafting unforgettable Indian journeys for thousands of happy travellers.' },
+  { icon: 'tune',              title: 'Fully Customizable',    desc: 'Every tour can be tailored to your budget, pace, and personal interests.' },
+  { icon: 'support_agent',     title: '24/7 Travel Support',   desc: 'Our team is always available — before, during, and after your journey.' },
+  { icon: 'currency_rupee',    title: 'Best Price Guarantee',  desc: 'Transparent pricing with no hidden charges. Value for every rupee spent.' },
 ]
 
 export default function Home() {
@@ -28,16 +28,13 @@ export default function Home() {
   return (
     <div className="bg-surface">
 
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1600&auto=format&fit=crop')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
-
-        {/* Linen texture overlay */}
         <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
 
         <div className="relative z-10 max-w-container mx-auto px-5 md:px-16 py-20">
@@ -68,7 +65,6 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Quick stats */}
           <div className="flex flex-wrap gap-8 mt-16">
             {[['500+', 'Happy Travellers'], ['50+', 'Tour Packages'], ['10+', 'Years Experience'], ['25+', 'Destinations']].map(([num, label]) => (
               <div key={label} className="text-white">
@@ -80,11 +76,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DESTINATIONS STRIP ── */}
+      {/* DESTINATIONS STRIP */}
       <section className="py-14 bg-surface-mid overflow-hidden">
         <div className="max-w-container mx-auto px-5 md:px-16">
           <p className="text-center text-xs font-bold text-primary uppercase tracking-[0.25em] mb-6">Where We Take You</p>
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex gap-4 overflow-x-auto pb-2">
             {DESTINATIONS.map(d => (
               <Link
                 key={d.name}
@@ -102,7 +98,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED TOURS ── */}
+      {/* FEATURED TOURS */}
       <section className="py-20 bg-surface">
         <div className="max-w-container mx-auto px-5 md:px-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -123,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
+      {/* WHY CHOOSE US */}
       <section className="py-20 bg-surface-low">
         <div className="max-w-container mx-auto px-5 md:px-16">
           <div className="text-center mb-14">
@@ -146,39 +142,41 @@ export default function Home() {
         </div>
       </section>
 
-{/* ── REAL REVIEWS ── */}
-<section className="py-20 bg-surface">
-  <div className="max-w-container mx-auto px-5 md:px-16 text-center">
-    <p className="text-xs font-bold text-primary uppercase tracking-[0.25em] mb-2">
-      Real Experiences
-    </p>
+      {/* REAL REVIEWS */}
+      <section className="py-20 bg-surface">
+        <div className="max-w-container mx-auto px-5 md:px-16 text-center">
+          <p className="text-xs font-bold text-primary uppercase tracking-[0.25em] mb-2">Real Experiences</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-on-surface mb-4">
+            Loved Your Journey With Us?
+          </h2>
+          <p className="text-on-surface-var text-lg max-w-xl mx-auto mb-10">
+            Your honest review helps other travellers discover the real India with us. Takes just 1 minute!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white border-2 border-primary text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary hover:text-white transition-all"
+            >
+              <span className="material-symbols-outlined text-[22px]">star</span>
+              Leave a Google Review
+            </a>
+            <a
+              href="https://www.facebook.com/share/1LhYE11Jch/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white border-2 border-[#1877F2] text-[#1877F2] px-8 py-4 rounded-xl font-bold hover:bg-[#1877F2] hover:text-white transition-all"
+            >
+              <span className="material-symbols-outlined text-[22px]">thumb_up</span>
+              Follow on Facebook
+            </a>
+          </div>
+          <p className="text-xs text-on-surface-var mt-4">Share your honest experience with fellow travellers</p>
+        </div>
+      </section>
 
-    <h2 className="font-display text-3xl md:text-4xl font-bold text-on-surface mb-4">
-      Loved Your Journey With Us?
-    </h2>
-
-    <p className="text-on-surface-var text-lg max-w-xl mx-auto mb-10">
-      Your honest review helps other travellers discover the real India with us.
-      Takes just 1 minute!
-    </p>
-
-    <a
-      href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK"
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center gap-3 bg-white border-2 border-primary text-primary px-8 py-4 rounded-xl font-bold text-base hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-    >
-      <span className="material-symbols-outlined text-[22px]">star</span>
-      Leave a Google Review
-    </a>
-
-    <p className="text-xs text-on-surface-var mt-4">
-      Opens Google Reviews — share your honest experience.
-    </p>
-  </div>
-</section>
-
-      {/* ── CTA BANNER ── */}
+      {/* CTA BANNER */}
       <section className="py-20 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 linen-texture opacity-10 pointer-events-none" />
         <div className="relative z-10 max-w-container mx-auto px-5 md:px-16 text-center">
