@@ -81,8 +81,31 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
       itinerary, inclusions, exclusions
     } = req.body
 
-    console.log('Received body:', req.body)
-    console.log('Received file:', req.file)
+    // Safe JSON parse helper
+    const safeParseArray = (val) => {
+      if (!val) return []
+      if (Array.isArray(val)) return val
+      try { return JSON.parse(val) } catch {
+        // fallback: split by newline
+        return val.split('\n').map(s => s.trim()).filter(Boolean)
+      }
+    }
+
+    // Safe JSON parse for itinerary
+    const safeParseItinerary = (val) => {
+      if (!val) return []
+      if (Array.isArray(val)) return val
+      try { return JSON.parse(val) } catch {
+        return val.split('\n').filter(Boolean).map((line, i) => {
+          const colonIndex = line.indexOf(':')
+          return {
+            day: i + 1,
+            title: colonIndex > -1 ? line.substring(0, colonIndex).trim() : line.trim(),
+            description: colonIndex > -1 ? line.substring(colonIndex + 1).trim() : ''
+          }
+        })
+      }
+    }
 
     const result = await pool.query(
       `INSERT INTO tours
@@ -91,16 +114,18 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
        RETURNING *`,
       [
-        name, region, duration,
+        name,
+        region,
+        duration,
         parseInt(duration_days) || 0,
         parseInt(price) || 0,
         featured === 'true',
         image_url,
         short_description,
-        typeof itinerary === 'string' ? JSON.parse(itinerary) : itinerary,
-        typeof highlights === 'string' ? JSON.parse(highlights) : highlights,
-        typeof inclusions === 'string' ? JSON.parse(inclusions) : inclusions,
-        typeof exclusions === 'string' ? JSON.parse(exclusions) : exclusions,
+        safeParseArray(highlights),
+        safeParseItinerary(itinerary),
+        safeParseArray(inclusions),
+        safeParseArray(exclusions),
       ]
     )
     res.status(201).json(result.rows[0])
