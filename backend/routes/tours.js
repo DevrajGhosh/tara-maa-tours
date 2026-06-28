@@ -66,13 +66,13 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
     let image_url = ''
 
     if (req.file) {
-      const result = await new Promise((resolve, reject) => {
+      const uploadResult = await new Promise((resolve, reject) => {
         cloudinary.uploader.upload_stream(
           { folder: 'tara-maa-tours' },
           (err, result) => err ? reject(err) : resolve(result)
         ).end(req.file.buffer)
       })
-      image_url = result.secure_url
+      image_url = uploadResult.secure_url
     }
 
     const {
@@ -81,37 +81,54 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
       itinerary, inclusions, exclusions
     } = req.body
 
-    // Safe JSON parse helper
-    const safeParseArray = (val) => {
+    // Parse array fields safely
+    const parseArr = (val) => {
       if (!val) return []
       if (Array.isArray(val)) return val
-      try { return JSON.parse(val) } catch {
-        // fallback: split by newline
-        return val.split('\n').map(s => s.trim()).filter(Boolean)
+      const trimmed = val.trim()
+      if (trimmed.startsWith('[')) {
+        try { return JSON.parse(trimmed) } catch {}
       }
+      return trimmed.split('\n').map(s => s.trim()).filter(Boolean)
     }
 
-    // Safe JSON parse for itinerary
-    const safeParseItinerary = (val) => {
+    // Parse itinerary safely — convert to array of objects
+    const parseItinerary = (val) => {
       if (!val) return []
       if (Array.isArray(val)) return val
-      try { return JSON.parse(val) } catch {
-        return val.split('\n').filter(Boolean).map((line, i) => {
-          const colonIndex = line.indexOf(':')
-          return {
-            day: i + 1,
-            title: colonIndex > -1 ? line.substring(0, colonIndex).trim() : line.trim(),
-            description: colonIndex > -1 ? line.substring(colonIndex + 1).trim() : ''
-          }
-        })
+      const trimmed = val.trim()
+      if (trimmed.startsWith('[')) {
+        try {
+          // Clean any double escaping before parsing
+          const cleaned = trimmed
+            .replace(/\\\\"/g, "'")
+            .replace(/\\"/g, "'")
+          return JSON.parse(cleaned)
+        } catch {}
       }
+      // Fallback: parse line by line
+      return trimmed.split('\n').filter(Boolean).map((line, i) => {
+        const colonIndex = line.indexOf(':')
+        return {
+          day: i + 1,
+          title: colonIndex > -1 ? line.substring(0, colonIndex).trim() : line.trim(),
+          description: colonIndex > -1 ? line.substring(colonIndex + 1).trim() : ''
+        }
+      })
     }
+
+    const highlightsArr  = parseArr(highlights)
+    const inclusionsArr  = parseArr(inclusions)
+    const exclusionsArr  = parseArr(exclusions)
+    const itineraryArr   = parseItinerary(itinerary)
+
+    console.log('itinerary parsed:', JSON.stringify(itineraryArr))
 
     const result = await pool.query(
       `INSERT INTO tours
         (name, region, duration, duration_days, price, featured, image_url,
          short_description, highlights, itinerary, inclusions, exclusions)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12)
        RETURNING *`,
       [
         name,
@@ -122,16 +139,16 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
         featured === 'true',
         image_url,
         short_description,
-        safeParseArray(highlights),
-        JSON.parse(itinerary.replace(/\\"/g, "'")),
-        safeParseArray(inclusions),
-        safeParseArray(exclusions),
+        highlightsArr,
+        JSON.stringify(itineraryArr),
+        inclusionsArr,
+        exclusionsArr,
       ]
     )
     res.status(201).json(result.rows[0])
   } catch (err) {
     console.error('POST /api/tours error:', err)
-    res.status(500).json({ error: err.message, stack: err.stack })
+    res.status(500).json({ error: err.message })
   }
 })
 
