@@ -2,7 +2,6 @@ const WHATSAPP = '918637090545'
 const PHONE    = '+91 8637090545'
 const FACEBOOK = 'https://www.facebook.com/share/1LhYE11Jch/'
 const ADDRESS  = 'Noapara, Barasat, Kolkata - 700125, West Bengal, India'
-const HOURS    = 'Mon–Sat: 9:00 AM – 7:00 PM\nSunday: By Appointment Only'
 
 export default function Contact() {
   return (
@@ -98,13 +97,6 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <span className="material-symbols-outlined text-[22px] text-primary mt-0.5">schedule</span>
-                <div>
-                  <p className="font-bold text-sm text-on-surface">Working Hours</p>
-                  <p className="text-on-surface-var text-sm whitespace-pre-line">{HOURS}</p>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start">
                 <span className="material-symbols-outlined text-[22px] text-primary mt-0.5">call</span>
                 <div>
                   <p className="font-bold text-sm text-on-surface">Phone</p>
@@ -124,15 +116,15 @@ export default function Contact() {
           {/* Map */}
           <div className="rounded-2xl overflow-hidden border border-outline-light shadow-lg h-72 md:h-96">
             <iframe
-              title="Tara Maa Tours Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.8!2d88.4817!3d22.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDQyJzAwLjAiTiA4OMKwMjgnNTQuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+  title="Tara Maa Tours Location"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.2!2d88.4750!3d22.7200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d9c6b7a0001%3A0x1!2sNoapara%2C+Barasat%2C+Kolkata%2C+West+Bengal+700125!5e0!3m2!1sen!2sin!4v1234567890"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen=""
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+/>
           </div>
         </div>
       </section>
