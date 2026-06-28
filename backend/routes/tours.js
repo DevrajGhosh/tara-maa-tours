@@ -81,6 +81,9 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
       itinerary, inclusions, exclusions
     } = req.body
 
+    console.log('Received body:', req.body)
+    console.log('Received file:', req.file)
+
     const result = await pool.query(
       `INSERT INTO tours
         (name, region, duration, duration_days, price, featured, image_url,
@@ -89,8 +92,8 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
        RETURNING *`,
       [
         name, region, duration,
-        parseInt(duration_days),
-        parseInt(price),
+        parseInt(duration_days) || 0,
+        parseInt(price) || 0,
         featured === 'true',
         image_url,
         short_description,
