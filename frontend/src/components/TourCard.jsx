@@ -11,15 +11,13 @@ export default function TourCard({ tour }) {
         {/* Image */}
         <div className="relative h-56 overflow-hidden">
           <img
-            src={tour.image}
+            src={tour.image || tour.image_url}
             alt={tour.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          {/* Region badge */}
           <span className="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">
             {tour.region}
           </span>
-          {/* Featured badge */}
           {tour.featured && (
             <span className="absolute top-3 right-3 bg-tertiary text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]" style={{fontVariationSettings:"'FILL' 1"}}>star</span>
@@ -43,12 +41,19 @@ export default function TourCard({ tour }) {
             </span>
           </div>
 
-          <p className="text-sm text-on-surface-var line-clamp-2 mb-4 flex-1">{tour.shortDescription}</p>
+          <p className="text-sm text-on-surface-var line-clamp-2 mb-4 flex-1">
+            {tour.shortDescription || tour.short_description}
+          </p>
 
           <div className="flex items-center justify-between mt-auto">
             <div>
-              <span className="text-xs text-on-surface-var block">Starting at</span>
-              <span className="text-lg font-bold text-primary font-display">₹{tour.price.toLocaleString('en-IN')}</span>
+              <span className="text-xs text-on-surface-var block">Starting from</span>
+              <span className="text-lg font-bold text-primary font-display">
+                ₹{(tour.price).toLocaleString('en-IN')}
+              </span>
+              <span className="text-[10px] text-on-surface-var block leading-tight">
+                *Price varies by group size
+              </span>
             </div>
             <button
               onClick={() => setOpen(true)}

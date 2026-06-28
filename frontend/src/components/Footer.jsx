@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
-const WHATSAPP = '918637090545'
-const PHONE    = '+91 86370 90545'
-const EMAIL    = 'devrajghosh2525@gmail.com'
+const WHATSAPP  = '918637090545'
+const PHONE     = '+91 8637090545'
+const EMAIL     = 'devrajghosh2525@gmail.com'
+const FACEBOOK  = 'https://www.facebook.com/share/1LhYE11Jch/'
 
 export default function Footer() {
   return (
@@ -18,18 +19,26 @@ export default function Footer() {
             <p className="text-on-surface-var text-sm leading-relaxed">
               Crafting authentic Indian journeys with the warmth of traditional hospitality and the precision of modern travel.
             </p>
-            <div className="flex gap-4 mt-5">
+            <div className="flex gap-3 mt-5">
               <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                title="WhatsApp">
                 <span className="material-symbols-outlined text-[18px]">chat</span>
               </a>
               <a href={`tel:${PHONE}`}
-                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                title="Call Us">
                 <span className="material-symbols-outlined text-[18px]">call</span>
               </a>
               <a href={`mailto:${EMAIL}`}
-                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                className="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                title="Email Us">
                 <span className="material-symbols-outlined text-[18px]">mail</span>
+              </a>
+              <a href={FACEBOOK} target="_blank" rel="noreferrer"
+                className="w-9 h-9 rounded-full bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all"
+                title="Facebook">
+                <span className="material-symbols-outlined text-[18px]">thumb_up</span>
               </a>
             </div>
           </div>
@@ -71,12 +80,25 @@ export default function Footer() {
                 <span className="material-symbols-outlined text-[18px] text-primary">mail</span>
                 {EMAIL}
               </a>
+              <a href={FACEBOOK} target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 hover:text-[#1877F2] transition-colors">
+                <span className="material-symbols-outlined text-[18px] text-[#1877F2]">thumb_up</span>
+                Follow on Facebook
+              </a>
               <p className="flex items-start gap-2 mt-1">
                 <span className="material-symbols-outlined text-[18px] text-primary mt-0.5">location_on</span>
                 <span>Bhātpāra, West Bengal, India</span>
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Pricing note */}
+        <div className="bg-tertiary-light/30 border border-tertiary/20 rounded-xl px-5 py-3 mb-6 text-center">
+          <p className="text-xs text-on-surface-var">
+            <span className="font-bold text-tertiary">Note:</span> All tour prices are starting prices per person. Final price depends on group size, season, and customizations. 
+            <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" className="text-primary font-bold ml-1 hover:underline">Contact us for exact quote →</a>
+          </p>
         </div>
 
         {/* Bottom bar */}
