@@ -77,6 +77,25 @@ export default function TourModal({ tour, onClose }) {
               ))}
             </div>
           </div>
+          {/* Available Dates - only show if present */}
+{tour.available_dates && tour.available_dates.length > 0 && (
+  <div>
+    <h3 className="font-display text-lg font-bold text-on-surface mb-3 flex items-center gap-2">
+      <span className="material-symbols-outlined text-[20px] text-primary">event_available</span>
+      Upcoming Group Tour Dates
+    </h3>
+    <div className="flex flex-wrap gap-2">
+      {tour.available_dates.map((date, i) => (
+        <span key={i} className="bg-primary/10 text-primary text-sm font-semibold px-4 py-2 rounded-full border border-primary/20">
+          {date}
+        </span>
+      ))}
+    </div>
+    <p className="text-xs text-on-surface-var mt-2">
+      Limited seats available — contact us to confirm your spot on any of these dates.
+    </p>
+  </div>
+)}
 
           {/* Itinerary */}
           <div>

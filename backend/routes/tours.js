@@ -76,10 +76,10 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
     }
 
     const {
-      name, region, duration, duration_days, price,
-      featured, short_description, highlights,
-      itinerary, inclusions, exclusions
-    } = req.body
+  name, region, duration, duration_days, price,
+  featured, short_description, highlights,
+  itinerary, inclusions, exclusions, available_dates
+} = req.body
 
     // Parse array fields safely
     const parseArr = (val) => {
@@ -125,26 +125,25 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
     console.log('itinerary parsed:', JSON.stringify(itineraryArr))
 
     const result = await pool.query(
-      `INSERT INTO tours
-        (name, region, duration, duration_days, price, featured, image_url,
-         short_description, highlights, itinerary, inclusions, exclusions)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12)
-       RETURNING *`,
-      [
-        name,
-        region,
-        duration,
-        parseInt(duration_days) || 0,
-        parseInt(price) || 0,
-        featured === 'true',
-        image_url,
-        short_description,
-        highlightsArr,
-        JSON.stringify(itineraryArr),
-        inclusionsArr,
-        exclusionsArr,
-      ]
-    )
+  `INSERT INTO tours
+    (name, region, duration, duration_days, price, featured, image_url,
+     short_description, highlights, itinerary, inclusions, exclusions, available_dates)
+   VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+   RETURNING *`,
+  [
+    name, region, duration,
+    parseInt(duration_days),
+    parseInt(price),
+    featured === 'true',
+    image_url,
+    short_description,
+    JSON.parse(highlights),
+    JSON.parse(itinerary),
+    JSON.parse(inclusions),
+    JSON.parse(exclusions),
+    available_dates ? JSON.parse(available_dates) : [],
+  ]
+)
     res.status(201).json(result.rows[0])
   } catch (err) {
     console.error('POST /api/tours error:', err)

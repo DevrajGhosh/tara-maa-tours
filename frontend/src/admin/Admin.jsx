@@ -7,6 +7,7 @@ const EMPTY_TOUR = {
   name: '', region: '', duration: '', durationDays: '', price: '',
   featured: false, image: null, shortDescription: '',
   highlights: '', itinerary: '', inclusions: '', exclusions: '',
+  availableDates: '',
 }
 
 export default function Admin() {
@@ -79,6 +80,7 @@ const handleSave = async () => {
       const exclusionsArr = form.exclusions.split('\n').map(s => s.trim()).filter(Boolean)
       formData.append('inclusions', JSON.stringify(inclusionsArr))
       formData.append('exclusions', JSON.stringify(exclusionsArr))
+      formData.append('available_dates', JSON.stringify(form.availableDates.split('\n').filter(Boolean)))
 
       // Itinerary — each line is "Title: Description"
       // We sanitize by removing any extra quotes or backslashes
@@ -205,6 +207,12 @@ const handleSave = async () => {
             <TextArea label="Exclusions (one per line)" name="exclusions"
               placeholder={"Airfare\nLunch\nInsurance"} rows={4} />
           </div>
+          <TextArea
+  label="Group Tour Available Dates (optional, one per line)"
+  name="availableDates"
+  placeholder={"15 July 2026\n20 August 2026\n10 September 2026"}
+  rows={3}
+/>
 
           <div className="flex items-center gap-3">
             <input type="checkbox" name="featured" id="featured"
