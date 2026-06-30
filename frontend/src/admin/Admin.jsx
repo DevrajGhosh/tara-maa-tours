@@ -107,11 +107,13 @@ export default function Admin() {
     formData.append('exclusions', JSON.stringify(form.exclusions.split('\n').filter(Boolean)))
     formData.append('available_dates', JSON.stringify(form.availableDates.split('\n').filter(Boolean)))
     formData.append('itinerary', JSON.stringify(
-      form.itinerary.split('\n').filter(Boolean).map((line, i) => {
-        const [title, ...rest] = line.split(':')
-        return { day: i + 1, title: title.trim(), description: rest.join(':').trim() }
-      })
-    ))
+  form.itinerary.split('\n').filter(Boolean).map((line, i) => {
+    const colonIndex = line.indexOf(':')
+    const title = colonIndex > -1 ? line.slice(0, colonIndex).trim() : line.trim()
+    const description = colonIndex > -1 ? line.slice(colonIndex + 1).trim() : ''
+    return { day: i + 1, title, description }
+  })
+))
     if (form.image) formData.append('image', form.image)
     return formData
   }
