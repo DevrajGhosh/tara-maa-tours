@@ -31,12 +31,9 @@ export default function Home() {
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1454509092480-44bf95b0d4e1?auto=format&fit=crop&w=1600&q=80')",
-}}
-        />
+  className="absolute inset-0 bg-cover bg-center"
+  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1600&auto=format&fit=crop')" }}
+/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
         <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
 
