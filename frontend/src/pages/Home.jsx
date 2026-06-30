@@ -32,7 +32,7 @@ export default function Home() {
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1600&auto=format&fit=crop')" }}
+          style={{ backgroundImage: "url('https://unsplash.com/photos/aerial-photography-of-mountain-range-covered-with-snow-under-white-and-blue-sky-at-daytime-9wg5jCEPBsw')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
         <div className="absolute inset-0 linen-texture opacity-5 pointer-events-none" />
