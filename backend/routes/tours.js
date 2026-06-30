@@ -124,11 +124,17 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
 
     console.log('itinerary parsed:', JSON.stringify(itineraryArr))
 
-    const result = await pool.query(
+    const parsedHighlights = JSON.parse(highlights)
+const parsedItinerary  = JSON.parse(itinerary)
+const parsedInclusions = JSON.parse(inclusions)
+const parsedExclusions = JSON.parse(exclusions)
+const parsedDates      = available_dates ? JSON.parse(available_dates) : []
+
+const result = await pool.query(
   `INSERT INTO tours
     (name, region, duration, duration_days, price, featured, image_url,
      short_description, highlights, itinerary, inclusions, exclusions, available_dates)
-   VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+   VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12,$13)
    RETURNING *`,
   [
     name, region, duration,
@@ -137,11 +143,11 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
     featured === 'true',
     image_url,
     short_description,
-    JSON.parse(highlights),
-    JSON.parse(itinerary),
-    JSON.parse(inclusions),
-    JSON.parse(exclusions),
-    available_dates ? JSON.parse(available_dates) : [],
+    parsedHighlights,
+    JSON.stringify(parsedItinerary),
+    parsedInclusions,
+    parsedExclusions,
+    parsedDates,
   ]
 )
     res.status(201).json(result.rows[0])
