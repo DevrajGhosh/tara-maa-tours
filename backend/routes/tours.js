@@ -172,7 +172,10 @@ router.put('/:id', adminAuth, upload.single('image'), async (req, res) => {
       })
       image_url = result.secure_url
     }
-    console.log('ITINERARY BEING SENT:', itinerary)
+    console.log('HIGHLIGHTS BEING SENT:', highlights)
+console.log('ITINERARY BEING SENT:', itinerary)
+console.log('INCLUSIONS BEING SENT:', inclusions)
+console.log('EXCLUSIONS BEING SENT:', exclusions)
     const result = await pool.query(
       `UPDATE tours SET
         name=$1, region=$2, duration=$3, duration_days=$4,
