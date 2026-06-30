@@ -192,8 +192,9 @@ router.put('/:id', adminAuth, upload.single('image'), async (req, res) => {
     )
     res.json(result.rows[0])
   } catch (err) {
-    res.status(500).json({ error: err.message })
-  }
+  console.error('PUT /tours/:id error:', err)
+  res.status(500).json({ error: err.message })
+}
 })
 
 // DELETE tour (admin only)
