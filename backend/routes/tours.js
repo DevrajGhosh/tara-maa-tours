@@ -152,25 +152,41 @@ router.post('/', adminAuth, upload.single('image'), async (req, res) => {
 })
 
 // PUT update tour (admin only)
-router.put('/:id', adminAuth, async (req, res) => {
+router.put('/:id', adminAuth, upload.single('image'), async (req, res) => {
   try {
     const {
       name, region, duration, duration_days, price,
       featured, short_description, highlights,
-      itinerary, inclusions, exclusions
+      itinerary, inclusions, exclusions, available_dates,
+      existing_image
     } = req.body
+
+    let image_url = existing_image
+
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload_stream(
+          { folder: 'tara-maa-tours' },
+          (err, result) => err ? reject(err) : resolve(result)
+        ).end(req.file.buffer)
+      })
+      image_url = result.secure_url
+    }
 
     const result = await pool.query(
       `UPDATE tours SET
         name=$1, region=$2, duration=$3, duration_days=$4,
         price=$5, featured=$6, short_description=$7,
-        highlights=$8, itinerary=$9, inclusions=$10, exclusions=$11
-       WHERE id=$12 RETURNING *`,
+        highlights=$8, itinerary=$9, inclusions=$10, exclusions=$11,
+        available_dates=$12, image_url=$13
+       WHERE id=$14 RETURNING *`,
       [
         name, region, duration, parseInt(duration_days),
         parseInt(price), featured === 'true', short_description,
         JSON.parse(highlights), JSON.parse(itinerary),
         JSON.parse(inclusions), JSON.parse(exclusions),
+        available_dates ? JSON.parse(available_dates) : [],
+        image_url,
         req.params.id
       ]
     )
