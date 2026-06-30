@@ -176,23 +176,29 @@ router.put('/:id', adminAuth, upload.single('image'), async (req, res) => {
 console.log('ITINERARY BEING SENT:', itinerary)
 console.log('INCLUSIONS BEING SENT:', inclusions)
 console.log('EXCLUSIONS BEING SENT:', exclusions)
-    const result = await pool.query(
-      `UPDATE tours SET
-        name=$1, region=$2, duration=$3, duration_days=$4,
-        price=$5, featured=$6, short_description=$7,
-        highlights=$8, itinerary=$9, inclusions=$10, exclusions=$11,
-        available_dates=$12, image_url=$13
-       WHERE id=$14 RETURNING *`,
-      [
-        name, region, duration, parseInt(duration_days),
-        parseInt(price), featured === 'true', short_description,
-        JSON.parse(highlights), JSON.parse(itinerary),
-        JSON.parse(inclusions), JSON.parse(exclusions),
-        available_dates ? JSON.parse(available_dates) : [],
-        image_url,
-        req.params.id
-      ]
-    )
+    const parsedHighlights = JSON.parse(highlights)
+const parsedItinerary  = JSON.parse(itinerary)
+const parsedInclusions = JSON.parse(inclusions)
+const parsedExclusions = JSON.parse(exclusions)
+const parsedDates      = available_dates ? JSON.parse(available_dates) : []
+
+const result = await pool.query(
+  `UPDATE tours SET
+    name=$1, region=$2, duration=$3, duration_days=$4,
+    price=$5, featured=$6, short_description=$7,
+    highlights=$8, itinerary=$9::jsonb, inclusions=$10, exclusions=$11,
+    available_dates=$12, image_url=$13
+   WHERE id=$14 RETURNING *`,
+  [
+    name, region, duration, parseInt(duration_days),
+    parseInt(price), featured === 'true', short_description,
+    parsedHighlights, JSON.stringify(parsedItinerary),
+    parsedInclusions, parsedExclusions,
+    parsedDates,
+    image_url,
+    req.params.id
+  ]
+)
     res.json(result.rows[0])
   } catch (err) {
   console.error('PUT /tours/:id error:', err)
